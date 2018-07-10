@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="student1" class="com.wind.sp06.Student">
+    <constructor-arg value="그레고리팩"></constructor-arg> <!-- 생성자 파람들의 값을 넣어준다. --> 
+    <constructor-arg value="34"></constructor-arg>
+    <constructor-arg>
+      <list>
+        <value>수영</value>
+        <value>요리</value>
+      </list>
+    </constructor-arg>
+    <property name="height" value="187"></property> <!-- Student객체가 가지는 필드에 값을 넣어준다. -->
+    <property name="weight" value="75"></property>
+  </bean>
+  
+  <bean id="studentInfo1" class="com.wind.sp06.StudentInfo">  <!-- StudentInfo는 Student의 파람을 가져야한다(set메소드) -->
+    <property name="student" ref="student1"/>  				<!-- 그래서 위에서 만든 studuent1을 프로퍼티에 넣어준다. -->
+  </bean>
+
+</beans>

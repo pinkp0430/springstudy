@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="calculator" class="com.wind.sp03.Calculator"/>
+	
+	<bean id="myCalculator" class="com.wind.sp03.MyCalculator"> <!-- 야는 변수를 가지고 잇음으로 아래단 추가 -->
+		<property name="calculator" ref="calculator"/>
+		<property name="firstNum" value="10"/> <!-- setter함수와 중요한 관계, 스프링이 이메소드를 찾아서 변수값을 바꾸기 때문  --> 
+		<property name="secondNum" value="2"/>
+	</bean>
+	
+</beans>
