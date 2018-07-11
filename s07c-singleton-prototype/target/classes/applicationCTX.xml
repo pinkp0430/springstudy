@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+		
+	<context:annotation-config/> <!-- 어노테이션을 읽으라는 명령 -->
+	
+	<bean id="student" class="com.wind.sp07.Student" scope="singleton"> <!-- 여기서 만들어지는 객체는 한개.  -->
+		<constructor-arg value="오드리"/>
+		<constructor-arg value="28"/>
+	</bean>
+
+	<bean id="student2" class="com.wind.sp07.Student" scope="singleton"> <!-- 여기서 만들어지는 객체는 한개.  -->
+		<constructor-arg value="흐드리"/>
+		<constructor-arg value="28"/>
+	</bean>
+	
+	 <bean id="act" class="com.wind.sp07.Student" scope="prototype">
+		<constructor-arg value="엠마스톤"/>
+		<constructor-arg value="25"/>
+	</bean>
+	
+</beans>
