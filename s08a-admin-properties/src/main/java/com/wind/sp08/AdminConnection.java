@@ -52,6 +52,6 @@ public class AdminConnection implements InitializingBean, DisposableBean, Enviro
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("afterPropertiesSet()");	
 		setAdminId(env.getProperty("admin.id"));
-		setAdminId(env.getProperty("admin.pw"));
+		setAdminPw(env.getProperty("admin.pw"));
 	}
 }
