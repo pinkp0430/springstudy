@@ -35,7 +35,7 @@ public class BDao {
 		try {
 			connection = dataSource.getConnection();
 			String query = "select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent "
-					+ "from mvc_board order by bGroup desc, bStep asc "; // DB를 가져올 때, 그룹별로, bStep별로 sorting을 해서 list를 만든다. list.jsp에서는 이 걸 뿌려주기만함. 
+					+ "from mvc_board order by bGroup desc, bStep asc, bDate asc "; // DB를 가져올 때, 그룹별로, bStep별로 sorting을 해서 list를 만든다. list.jsp에서는 이 걸 뿌려주기만함. 
 			preparedStatement = connection.prepareStatement(query);
 			resultSet = preparedStatement.executeQuery();
 			
