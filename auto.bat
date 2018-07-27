@@ -1,3 +1,4 @@
+
 @echo off
 echo ==============================
 echo [PROCESSING...] git add --all .
