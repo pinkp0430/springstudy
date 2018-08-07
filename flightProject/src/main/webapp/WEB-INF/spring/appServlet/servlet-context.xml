@@ -23,7 +23,7 @@
 	
 	<context:component-scan base-package="com.wind.web" />
 
-<!-- 	
+ 	
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
  	<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
  	<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
@@ -35,9 +35,13 @@
 		<beans:property name="dataSource" ref="dataSource"/>
 	</beans:bean>
 	
-	 <beans:bean name="dao" class="com.wind.web.dao.MDao">
+	 <beans:bean name="Airportdao" class="com.wind.web.dao.AirportDao">
      	<beans:property name="template" ref="template"></beans:property>
   	 </beans:bean>
- -->
- 	
+
+ 	 <beans:bean name="TicketDao" class="com.wind.web.dao.TicketDao">
+     	<beans:property name="template" ref="template"></beans:property>
+  	 </beans:bean>
+	
+  	 
 </beans:beans>

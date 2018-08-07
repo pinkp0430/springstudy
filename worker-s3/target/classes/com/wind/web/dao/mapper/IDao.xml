@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.IDao">
+
+    <select id="majorlistDao" resultType="com.wind.web.dto.MajorDto">
+		SELECT id, m_name FROM major  <!-- 전공 리스트를 가져와라  -->
+	</select>
+	
+	<select id="majorselect_viewDao" resultType="com.wind.web.dto.MajorDto">
+		SELECT id, m_name FROM major ORDER BY id ASC <!-- 전공 리스트를 가져와라  -->
+	</select>
+	
+	<select id="majorselectDao" resultType="com.wind.web.dto.EngineerMajorDto">
+		SELECT eng_id FROM engineer_major where maj_id = #{param1}  <!-- 전공 리스트를 가져와라  -->
+	</select>	
+	
+	<select id="majorselect2Dao" resultType="com.wind.web.dto.EngineerDto">
+		SELECT * FROM engineer where id = #{param1}  <!-- 해당 전공 의사 리스트를 가져와라  -->
+	</select>
+    
+	<select id="majorselect3Dao" resultType="com.wind.web.dto.EngineerDto">
+		SELECT * FROM engineer where id in ( select eng_id from engineer_major where maj_id = #{param1})  <!-- 해당 전공 의사 리스트를 가져와라  -->
+	</select>
+	 
+
+</mapper>
