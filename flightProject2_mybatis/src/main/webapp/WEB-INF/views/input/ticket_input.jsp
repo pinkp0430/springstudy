@@ -11,12 +11,8 @@
     <table width="550" cellpadding="0" cellspacing="0" border="1">
     <form action="inputTicket" method="post">
       <tr>
-        <td > 항공사 </td>
-        <td> <input type="text" name="airline" size = "30"> </td>
-      </tr>
-      <tr>
-        <td> 항공편명 </td>
-        <td> <input type="text" name="flight_name" size = "30"> </td>
+        <td> 항공편-코드 </td>
+        <td> <input type="text" name="flight_code" size = "30"> </td>
       </tr>
       <tr>
         <td> 출발지 </td>
@@ -31,24 +27,22 @@
         <td> <input type="text" name="dep_time" size = "30"> </td>
       </tr>
       <tr>
-        <td> 도착시간 (yyyy-mm-dd hh:mi:ss)  </td>
-        <td> <input type="text" name="arri_time" size = "30"> </td>
+        <td> 비행시간 (yyyy-mm-dd hh:mi:ss)  </td>
+        <td> <input type="text" name="flight_time" size = "30"> </td>
       </tr>
       <tr>
-        <td> 잔여석 </td>
-        <td> <input type="text" name="seat_able" size = "30"> </td>
-      </tr>
-<!--      
-		<tr>
-        <td> 시간 </td>
-        <td> <input type="text" name="dtime" size = "30"> 
-       		 <input type="time" name="stime" size = "30"> </td>
-      </tr>
- -->
+        <td> 도착시간 (yyyy-mm-dd hh:mi:ss)  </td>
+        <td> <input type="text" name="arri_time" size = "30"> </td>
+      </tr> 
+      <tr>     
          <td> 가격 </td>
-        <td> <input type="text" name="seat_price" size = "30"> </td>        
-		<td>&nbsp;&nbsp;<input type="submit" value="입력"></td>
-  
+         <td> <input type="text" name="price" size = "30"> </td> 
+      </tr>
+      <tr>   
+      	 <td> 추천  </td>
+         <td> <input type="text" name="md" size = "30"> </td>      
+		 <td>&nbsp;&nbsp;<input type="submit" value="입력"></td>
+  	  </tr>
     </form> 
 
 

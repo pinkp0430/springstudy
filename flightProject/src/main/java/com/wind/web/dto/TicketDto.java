@@ -5,62 +5,31 @@ import java.sql.Timestamp;
 public class TicketDto {
 	
 	  private int ticket_id;
-	  private String airline;
-	  private String flight_name;
+	  private String flight_code;
 	  private String departure;
 	  private String arrive;
 	  private Timestamp dep_time;
+	  private Timestamp flight_time;
 	  private Timestamp arri_time;
-	  private int seat_able;
-	  private int seat_price;
-//	  private Timestamp dtime;
-	  private String dName;
-		  
+	  private int price;
+	  
 	  public TicketDto() {
 		super();
 	  }
 
-	  public TicketDto(int ticket_id, String airline, String flight_name, String departure, String arrive,
-			  Timestamp dep_time, Timestamp arri_time, int seat_able, int seat_price, String dName) {
+	  public TicketDto(int ticket_id, String flight_code, String departure, String arrive, Timestamp dep_time,
+			Timestamp flight_time, Timestamp arri_time, int price) {
 		super();
 		this.ticket_id = ticket_id;
-		this.airline = airline;
-		this.flight_name = flight_name;
+		this.flight_code = flight_code;
 		this.departure = departure;
 		this.arrive = arrive;
 		this.dep_time = dep_time;
+		this.flight_time = flight_time;
 		this.arri_time = arri_time;
-		this.seat_able = seat_able;
-		this.seat_price = seat_price;
-		this.dName = dName;
-//		this.stime = stime;
-	}
+		this.price = price;
+	  }
 
-	  
-//	public String getStime() {
-//		return stime;
-//	}
-//
-//	public void setStime(String stime) {
-//		this.stime = stime;
-//	}
-//
-//	public Timestamp getDtime() {
-//		return dtime;
-//	}
-//
-//	public void setDtime(Timestamp dtime) {
-//		this.dtime = dtime;
-//	}
-
-	public String getdName() {
-		return dName;
-	}
-
-	public void setdName(String dName) {
-		this.dName = dName;
-	}	
- 
 	public int getTicket_id() {
 		return ticket_id;
 	}
@@ -69,20 +38,12 @@ public class TicketDto {
 		this.ticket_id = ticket_id;
 	}
 
-	public String getAirline() {
-		return airline;
+	public String getFlight_code() {
+		return flight_code;
 	}
 
-	public void setAirline(String airline) {
-		this.airline = airline;
-	}
-
-	public String getFlight_name() {
-		return flight_name;
-	}
-
-	public void setFlight_name(String flight_name) {
-		this.flight_name = flight_name;
+	public void setFlight_code(String flight_code) {
+		this.flight_code = flight_code;
 	}
 
 	public String getDeparture() {
@@ -109,6 +70,14 @@ public class TicketDto {
 		this.dep_time = dep_time;
 	}
 
+	public Timestamp getFlight_time() {
+		return flight_time;
+	}
+
+	public void setFlight_time(Timestamp flight_time) {
+		this.flight_time = flight_time;
+	}
+
 	public Timestamp getArri_time() {
 		return arri_time;
 	}
@@ -117,20 +86,13 @@ public class TicketDto {
 		this.arri_time = arri_time;
 	}
 
-	public int getSeat_able() {
-		return seat_able;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setSeat_able(int seat_able) {
-		this.seat_able = seat_able;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-
-	public int getSeat_price() {
-		return seat_price;
-	}
-
-	public void setSeat_price(int seat_price) {
-		this.seat_price = seat_price;
-	}
+		  
 	  
 }

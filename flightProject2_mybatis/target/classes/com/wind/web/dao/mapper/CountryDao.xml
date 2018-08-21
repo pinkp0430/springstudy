@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.CountryDao">
+
+    <select id="country_listDao" resultType="com.wind.web.dto.CountryDto">
+		SELECT * FROM countryTB  <!-- 나라 리스트를 가져와라  -->
+	</select>  
+	<insert id="inputCountryDao">
+		insert into countryTB(c_code, c_name, continent) values (#{param1}, #{param2}, #{param3})
+	</insert>
+	<delete id="country_deleteDao">
+		delete from countryTB where c_code = #{param1}
+	</delete>
+    <select id="continent_listDao" resultType="com.wind.web.dto.CountryDto">
+		SELECT continent FROM countryTB  group by continent<!-- 대륙만의 리스트를 가져와라  -->
+	</select> 
+
+	
+</mapper>

@@ -2,53 +2,42 @@ package com.wind.web.dto;
 
 public class AirportDto {
 	
-	private String port_continent; 
-	private String port_country;
-	private String port_code; 
-	private String port_name;
+	private String code; 
+	private String name;
+	private String country_code;
 	
 	public AirportDto() { }
 
-	public AirportDto(String port_continent, String port_country, String port_code, String port_name) {
+	public AirportDto(String code, String name, String country_code) {
 		super();
-		this.port_continent = port_continent;
-		this.port_country = port_country;
-		this.port_code = port_code;
-		this.port_name = port_name;
+		this.code = code;
+		this.name = name;
+		this.country_code = country_code;
 	}
 
-	public String getPort_continent() {
-		return port_continent;
+	public String getCode() {
+		return code;
 	}
 
-	public void setPort_continent(String port_continent) {
-		this.port_continent = port_continent;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
-	public String getPort_country() {
-		return port_country;
+	public String getName() {
+		return name;
 	}
 
-	public void setPort_country(String port_country) {
-		this.port_country = port_country;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getPort_code() {
-		return port_code;
+	public String getCountry_code() {
+		return country_code;
 	}
 
-	public void setPort_code(String port_code) {
-		this.port_code = port_code;
+	public void setCountry_code(String country_code) {
+		this.country_code = country_code;
 	}
 
-	public String getPort_name() {
-		return port_name;
-	}
-
-	public void setPort_name(String port_name) {
-		this.port_name = port_name;
-	}
-
-
-
+	
 }

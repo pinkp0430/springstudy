@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.AirportDao">
+
+<!-- airportTB -->
+    <select id="airport_listDao" resultType="com.wind.web.dto.AirportDto">
+		SELECT * FROM airportTB  <!-- 공항 리스트를 가져와라  -->
+	</select>  
+	<insert id="inputAirportDao">
+		insert into airportTB(ap_code, ap_name, country_code) values (#{param1}, #{param2}, #{param3})
+	</insert>
+	<delete id="airport_deleteDao">
+		delete from airportTB where ap_code = #{param1}
+	</delete>
+
+</mapper>

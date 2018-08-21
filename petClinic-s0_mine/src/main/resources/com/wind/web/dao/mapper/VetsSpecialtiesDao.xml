@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.VetsSpecialtiesDao">
+
+	<delete id="vetspec_deleteDao" >
+		delete FROM vet_specialties where vet_id IN #{param1} <!-- 전공 리스트를 가져와라  -->
+	</delete>
+
+	<insert id="add_vetspecDao" >
+		insert into vet_specialties (vet_id, specialty_id) value (#{param1}, #{param2}) <!-- 전공 리스트를 가져와라  -->
+	</insert>
+	
+	<select id="vetspeslistDao" resultType="com.wind.web.dto.VetspecialtiesDto">
+		select * from vet_specialties order by vet_id asc, specialty_id asc
+	</select>
+</mapper>

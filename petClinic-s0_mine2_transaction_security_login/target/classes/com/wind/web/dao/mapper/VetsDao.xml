@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.VetsDao">
+
+
+    <select id="vetslistDao" resultType="com.wind.web.dto.VetsDto">
+		SELECT * FROM vets ORDER BY id ASC <!-- 의사 리스트를 가져와라  -->
+	</select>
+
+	<select id="vetselectDao" resultType="com.wind.web.dto.VetspecialtiesDto">
+		SELECT vet_id FROM vet_specialties where specialty_id = #{param1}  <!-- 전공 리스트를 가져와라  -->
+	</select>
+
+ 	<select id="vetselect2Dao" resultType="com.wind.web.dto.VetsDto">
+		SELECT * FROM vets where id = #{param1}  <!-- id가 #인 의사 리스트를 가져와라  -->
+	</select>
+    
+    <select id="vetselect3Dao" resultType="com.wind.web.dto.VetsDto">
+		SELECT * FROM vets where id in( select vet_id from vet_specialties where specialty_id = #{param1} ) <!-- 전공이 #인 의사 리스트를 가져와라  -->
+	</select>
+
+	<insert id="vet_addDao"> <!-- vets 테이블의 생김에 주의해서 값을 넣자 -->
+		insert into vets (id, first_name, last_name) values (vets_seq.nextval, #{param1}, #{param2})
+	</insert>	
+	
+	<delete id="vet_deleteDao">
+		delete from vet_specialties where vet_id = #{param1} 
+	</delete>
+	
+	<insert id="vet_specialties_addDao">
+<!-- 		begin
+	      	for i in 1 .. #{param2}.count loop
+	   		insert into vet_specialties (vet_id, specialty_id) values (#{param1}, #{param2}(i)) 
+	     	 end loop;
+		end;
+ -->
+ 		insert into vet_specialties (vet_id, specialty_id) values (#{param1}, #{param2}) 
+ 	</insert>
+</mapper>

@@ -1,0 +1,119 @@
+dynamic web : member_springmvc
+
+lib : spring api, jstl, ibatis
+
+jsp : WebConent/res
+         WebContent/
+
+java : 	
+	카피
+	member.model.dao
+	member.model.service
+	member.model.exception
+	member.dto
+	생성
+	member.controller.MemberController
+
+
+설정파일 :
+ibatis - SqlMapConfig.xml - /WEB-INF
+             member.xml -  member.config/member.xml
+스프링 설정 - member-spring.xml - WEB-INF
+
+web.xml - DispatcherServlet 등록
+                  CharacterEncodingFilter 등록 
+
+회원 등록
+WebContent/register_form.jsp
+->
+Ctr : registerMember(MemberDTO) : ModelAndView	
+->
+Service : registerMember()
+->
+DAO.메소드
+->
+응답 : 성공 : /res/register_success.jsp
+         오류 : /res/error.jsp
+
+전체회원조회
+WebContent/menu.jsp(/getAllMemberInfo.do로 요청)
+->
+Ctr : getAllMemberInfo() : ModelAndView	
+->
+Service : getAllMemberList()
+->
+DAO.메소드
+->
+응답 : 성공 : /res/member_list.jsp
+         오류 : /res/error.jsp
+
+로그인 처리
+시작 : login_form.jsp (login.do요청)
+Ctr : login(id, password, HttpSession) : ModelAndView
+service : getMemberById() : MDTO
+View : 성공 : /res/login_success.jsp
+           실패 : 오류 : /res/error.jsp
+                  id/pwd 틀린경우 : /login_form.jsp
+
+로그아웃 처리
+시작 : logout.do로 요청시(menu.jsp, login_success.jsp)
+Ctr : logout(HttpSession)
+View : 성공/실패 - login_form.jsp
+
+로그인한 회원정보 조회
+시작 :login_success.jsp, menu.jsp(getLoginMemberInfo.do)
+ctr : getLoginMemberInfo()
+view : 성공 : member_detail.jsp
+          로그인 안한 경우 : login_form.jsp
+
+회원정보 수정 폼
+시작 : login_success.jsp, menu.jsp(modifyForm.do)
+ctr : modifyForm()
+view :성공 : /res/modify_form.jsp
+         로그인 안한경우 : login_form.jsp
+
+회원정보 수정 처리
+시작 : modifyForm.jsp (modifyMember.do)
+Ctr : modyfyMember()
+Service : modifyMember() ->dao
+view : 성공 : res/member_detail.jsp
+          실패 :exception - res/error.jsp
+                   로그인 안한 경우 - login_form.jsp
+
+
+회원 탈퇴 처리
+시작 : member_detail.jsp, menu.jsp (removeMember.do)
+Ctr : removeMember()
+Service : removeMemberById()
+View : 성공 - login_form.jsp
+         실패 - Exception - res/error.jsp
+                 로그인 안한상태 -  login_form.jsp
+
+마일리지 검색처리
+시작 : seach_form.jsp (/searchMemberByMileageRange.do)
+Ctr : searchMemberByMileageRange()
+serivce : searchMemberByMileageRange() ->dao
+view : 성공 : res/search_result.jsp
+           실패 : exception - res/error.jsp
+
+이름으로 검색처리
+시작 : search_form.jsp(/searchMemberByName.do)
+Ctr : searchMemberByName()
+service : searchMemberByName() ->dao
+view : 성공 : /res/search_result.jsp
+           실패 :exception :res/error.jsp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
