@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.BasketDao">
+
+	 <select id="basket_checkDao" resultType="com.wind.web.dto.TicketBuyDto">
+		select *
+		from basketTB 
+        where username = #{param1}
+        	and ticket_id = #{param2}
+	</select>
+ 	<select id="basket_getCntDao" resultType="Integer">
+		select cnt 
+		from basketTB 
+        where username = #{param1}
+        	and ticket_id = #{param2}
+	</select>
+	<update id="basket_updateDao">
+		update basketTB
+		set cnt = #{param3}
+		where username = #{param1}
+        	and ticket_id = #{param2}
+	</update>
+	<insert id="basket_inputDao">
+        insert into basketTB(basket_id, username, ticket_id, cnt, validity) values (basketTB_seq.nextval, #{param1}, #{param2}, #{param3}, 1)
+	</insert>
+ 	<select id="basket_listDao" resultType="com.wind.web.dto.TicketBuyDto">
+		select t.ticket_id, t.arrive, t.price, b.cnt as seat_buy
+		from ticket_All t, basketTB b
+        where t.ticket_id = b.ticket_id
+            and b.username = #{param1}
+	</select>
+	<delete id="basket_deleteDao">
+		delete from basketTB 
+		where username = #{param1}
+			and ticket_id = #{param2}
+	</delete>
+
+</mapper>

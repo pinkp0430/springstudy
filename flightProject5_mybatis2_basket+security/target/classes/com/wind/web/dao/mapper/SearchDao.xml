@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.SearchDao">
+
+	<select id="low_price_listDao" resultType="com.wind.web.dto.TicketAllDto">
+		<![CDATA[
+		select t.*, p.ap_name, c.c_name, c.continent, a.a_name
+		from ticketTB t, airportTB p, countryTB c, airlineTB a
+		where t.arrive = p.ap_code
+		    and p.country_code = c.c_code
+		    and t.flight_code = a.a_code
+		    and t.dep_time  <= (select SYSDATE from dual)+7 
+		    and p.ap_name = #{param1}
+		    and seat_able != 0 
+		    and ROWNUM >= 1 and ROWNUM <= 4
+		order by c.continent, c.c_name, p.ap_name, t.price  
+		]]>
+	</select>
+	<select id="ticket_portDao" resultType="com.wind.web.dto.TicketAllDto">
+  		select t.* 
+  		from ticketTB t
+  		where  t.ticket_id = #{param1}
+	</select>	
+	<select id="countDao" resultType="String">
+        select count(*)
+        from ticketTB
+        where flight_code = #{param1}
+        	and arrive = #{param2}
+        	and dep_time = #{param3}
+	</select>
+	
+	
+	
+	
+<!-- //******************** 안쓰는 것들   -->
+	<select id="ticket_port_listDao" resultType="com.wind.web.dto.TicketDto">
+  		select t.* 
+  		from ticketTB t
+  		where  t.arrive = #{param1}
+        order by t.price
+	</select>
+	<select id="continent_ticketsDao" resultType="com.wind.web.dto.TicketDto">
+		 SELECT t.* 
+		 	FROM ticketTB t, airportTB ap, countryTB c 
+		 	WHERE t.arrive = ap.ap_code
+   		 		and ap.country_code = c.c_code 
+   		 		and c.continent = #{param1} 
+   		 	order by price
+	</select>		
+	<select id="low_priceDao" resultType="com.wind.web.dto.TicketDto">
+		select * from ticketTB where price = (select min(price) from ticketTB)
+	</select>  
+  	
+</mapper>

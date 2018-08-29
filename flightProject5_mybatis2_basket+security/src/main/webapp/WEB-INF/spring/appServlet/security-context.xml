@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+<security:http auto-config="true" use-expressions="true">
+  <security:form-login login-page="/loginForm.html" default-target-url="/login.html"
+    authentication-failure-url="/loginForm.html?ng" />
+  <security:intercept-url pattern="/loginForm.html*" access="permitAll"/>
+  <security:intercept-url pattern="/search/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+  <security:intercept-url pattern="/basket/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+  <security:intercept-url pattern="/login.htm*" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+  <security:intercept-url pattern="/index_input.html*" access="hasRole('ROLE_ADMIN')"/>
+  <security:intercept-url pattern="/notice/**" access="permitAll" />
+  <security:intercept-url pattern="/common/**" access="permitAll" />
+  <security:intercept-url pattern="/input/**" access="hasRole('ROLE_ADMIN')" />
+  <security:intercept-url pattern="/pay/**" access="permitAll" />
+  <security:intercept-url pattern="/**" access="permitAll" />
+  <!-- 아이고.. 요게 HomeController의 home에 선언된 곳으로 가는 걸, 모든 접근자로 허용한다 -->
+  
+<!-- <security:intercept-url pattern="/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />  -->  
+  <!-- 요건  HomeController의 home에 선언된 곳으로 가는 걸, ROLE_USer, ROLE_ADMIN으로 허용한다 -->
+</security:http>
+
+<security:authentication-manager>
+  <security:authentication-provider>
+
+  <security:jdbc-user-service data-source-ref="dataSource"
+    users-by-username-query="select username, password, enabled from memberuser where username=?"
+    authorities-by-username-query="select username, authority from memberuser where username=?"
+  />
+
+  </security:authentication-provider>
+</security:authentication-manager>
+
+  <bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+    <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+    <property name="username" value="scott" />
+    <property name="password" value="tiger" />
+  </bean>
+  
+</beans>

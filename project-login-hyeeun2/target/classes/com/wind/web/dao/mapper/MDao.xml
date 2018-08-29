@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web.dao.MDao">
+
+  <select id="listDao" resultType="com.wind.web.dto.MemberDto">
+		SELECT USERNAME, PASSWORD, M_NAME, M_CALL FROM MEMBER ORDER BY USERNAME DESC
+	</select>
+	
+	<insert id="writeDao">
+		INSERT INTO MEMBER (USERNAME, PASSWORD, M_NAME, M_CALL) 
+		VALUES (#{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<delete id="deleteDao">
+		DELETE FROM MEMBER WHERE USERNAME = #{param1}
+	</delete>
+	
+	<select id="viewDao" resultType="com.wind.web.dto.MemberDto">
+    SELECT * FROM MEMBER WHERE USERNAME = #{param1}
+  </select>
+
+</mapper>
