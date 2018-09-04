@@ -12,12 +12,13 @@ public class TicketAllDto {
 	private String dep_name;
 
 	private Timestamp dep_time;
-	private Timestamp flight_time;
+	private String flight_time;
 	private Timestamp arri_time;
 	  
 	private String arrive;
 	private String arri_name;
 	private String arri_country;
+	private String arri_country_code;
 	private String continent;
 	
 	private int seat_able;
@@ -32,8 +33,8 @@ public class TicketAllDto {
 	}
 	
 	public TicketAllDto(int ticket_id, String flight_code, String air_name, String departure, String dep_name,
-			Timestamp dep_time, Timestamp flight_time, Timestamp arri_time, String arrive, String arri_name,
-			String arri_country, String continent, int seat_able, int first_seat, String md, int price) {
+			Timestamp dep_time, String flight_time, Timestamp arri_time, String arrive, String arri_name,
+			String arri_country, String arri_country_code, String continent, int seat_able, int first_seat, String md, int price) {
 		super();
 		this.ticket_id = ticket_id;
 		this.flight_code = flight_code;
@@ -46,11 +47,21 @@ public class TicketAllDto {
 		this.arrive = arrive;
 		this.arri_name = arri_name;
 		this.arri_country = arri_country;
+		this.arri_country_code = arri_country_code;
 		this.continent = continent;
 		this.seat_able = seat_able;
 		this.first_seat = first_seat;
 		this.md = md;
 		this.price = price;
+	}
+
+	
+	public String getArri_country_code() {
+		return arri_country_code;
+	}
+
+	public void setArri_country_code(String arri_country_code) {
+		this.arri_country_code = arri_country_code;
 	}
 
 	public int getTicket_id() {
@@ -101,11 +112,11 @@ public class TicketAllDto {
 		this.dep_time = dep_time;
 	}
 
-	public Timestamp getFlight_time() {
+	public String getFlight_time() {
 		return flight_time;
 	}
 
-	public void setFlight_time(Timestamp flight_time) {
+	public void setFlight_time(String flight_time) {
 		this.flight_time = flight_time;
 	}
 

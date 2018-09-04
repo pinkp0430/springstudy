@@ -9,7 +9,7 @@ public class TicketDto {
 	private String departure;
 	private String arrive;
 	private Timestamp dep_time;
-	private Timestamp flight_time;
+	private String flight_time;
 	private Timestamp arri_time;
 	private int price;
 	private int seat_able;
@@ -21,7 +21,7 @@ public class TicketDto {
 	}
 
 	public TicketDto(int ticket_id, String flight_code, String departure, String arrive, Timestamp dep_time,
-			Timestamp flight_time, Timestamp arri_time, int price, int seat_able, int first_seat, String md) {
+			String flight_time, Timestamp arri_time, int price, int seat_able, int first_seat, String md) {
 		super();
 		this.ticket_id = ticket_id;
 		this.flight_code = flight_code;
@@ -76,11 +76,11 @@ public class TicketDto {
 		this.dep_time = dep_time;
 	}
 
-	public Timestamp getFlight_time() {
+	public String getFlight_time() {
 		return flight_time;
 	}
 
-	public void setFlight_time(Timestamp flight_time) {
+	public void setFlight_time(String flight_time) {
 		this.flight_time = flight_time;
 	}
 

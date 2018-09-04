@@ -5,10 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>low_price.jsp</title>
+<title>country_ticket.jsp</title>
 </head>
 <body>
 
+
+
+	
 <table width="1000" cellpadding="0" cellspacing="0" border="1">
   <tr>
     <td>티켓넘버</td>
@@ -21,7 +24,7 @@
     <td>가격</td>
   </tr>
 
-  <c:forEach items="${continent_tickets}" var="dto">
+<c:forEach items="${country_tickets}" var="dto">
   <tr>
     <td>${dto.ticket_id}</td>
     <td>${dto.flight_code }</td>
@@ -32,10 +35,13 @@
     <td>${dto.arri_time }</td>
     <td>${dto.price }</td>
   </tr>
-  </c:forEach>
-    
-</table>
+  </c:forEach>    
 
+
+ </table><br> 
+ 
+
+  
 <br>
     <td colspan="5"> <a href="index_search">INDEX_SEARCH</a></td>
     

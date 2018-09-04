@@ -8,6 +8,8 @@
 <title>index_search</title>
 </head>
 <body>
+<jsp:include page="../security/login_status.jsp" flush="false"></jsp:include>
+
 <center>
 
 <br> <br> <br> 

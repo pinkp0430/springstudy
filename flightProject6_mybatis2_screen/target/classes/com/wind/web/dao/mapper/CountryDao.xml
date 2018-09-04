@@ -6,7 +6,10 @@
 <mapper namespace="com.wind.web.dao.CountryDao">
 
     <select id="country_listDao" resultType="com.wind.web.dto.CountryDto">
-		SELECT * FROM countryTB  <!-- 나라 리스트를 가져와라  -->
+		SELECT continent, arri_country as c_name, arri_country_code as c_code 
+		FROM ticket_all  
+		where seat_able != 0
+        group by continent, arri_country, arri_country_code<!-- 잔여석이 0이 아닌, 나라 리스트를 가져와라  -->
 	</select>  
 	<insert id="inputCountryDao">
 		insert into countryTB(c_code, c_name, continent) values (#{param1}, #{param2}, #{param3})

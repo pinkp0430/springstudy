@@ -23,6 +23,8 @@ public interface BasketDao {
 
 	public void paidUpdateDao(String username, int ticket_id);
 
+	public void username_updateDao(String sess_id, String username);
+
 
 
 

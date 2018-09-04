@@ -32,23 +32,26 @@
 		from ticket_all 
 		where price in (select min(price) from ticket_all group by arri_country)
 			and seat_able != 0 
-    		and dep_time  <= (select SYSDATE from dual)+7
+    		and (dep_time >= (select sysdate from dual) + 6/24) and (dep_time  <= (select SYSDATE from dual)+7)
+    		order by price
 		]]>
 	</select>
 	<select id="ticket_portDao" resultType="com.wind.web.dto.TicketAllDto">
-  		select t.* 
-  		from ticketTB t
-  		where  t.ticket_id = #{param1}
+  		select * 
+  		from ticket_all 
+  		where  ticket_id = #{param1}
 	</select>	
-	<select id="countDao" resultType="String">
-        select count(*)
-        from ticketTB
-        where flight_code = #{param1}
-        	and arrive = #{param2}
-        	and dep_time = #{param3}
+
+	
+	<select id="country_ticketsDao" resultType="com.wind.web.dto.TicketAllDto">
+		 SELECT * 
+		 	FROM ticket_all 
+		 	WHERE arri_country_code = #{param2}
+		 	order by price
+  		 	
 	</select>
 	
-	
+		
 	
 	
 <!-- //******************** 안쓰는 것들   -->
@@ -58,16 +61,16 @@
   		where  t.arrive = #{param1}
         order by t.price
 	</select>
-	<select id="continent_ticketsDao" resultType="com.wind.web.dto.TicketDto">
-		 SELECT t.* 
-		 	FROM ticketTB t, airportTB ap, countryTB c 
-		 	WHERE t.arrive = ap.ap_code
-   		 		and ap.country_code = c.c_code 
-   		 		and c.continent = #{param1} 
-   		 	order by price
-	</select>		
+		
 	<select id="low_priceDao" resultType="com.wind.web.dto.TicketDto">
 		select * from ticketTB where price = (select min(price) from ticketTB)
 	</select>  
   	
+  	<select id="countDao" resultType="String">
+        select count(*)
+        from ticket_all
+        where flight_code = #{param1}
+        	and arrive = #{param2}
+        	and dep_time = #{param3}
+	</select>
 </mapper>

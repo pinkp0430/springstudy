@@ -5,16 +5,20 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.wind.web.dao.BasketDao;
 import com.wind.web.dao.member.MDao;
 import com.wind.web.dao.member.MUserDao;
 import com.wind.web.dto.member.MemberDto;
@@ -38,8 +42,15 @@ public class LoginController {
 	}
 	
 	@RequestMapping("/login.html")
-	public String login() {
-		System.out.println();
+	public String login(HttpSession session) {
+		System.out.println("login");
+		if(session.getAttribute("sess_id") != null) {
+			BasketDao dao = sqlSession.getMapper(BasketDao.class);
+			dao.username_updateDao(String.valueOf(session.getAttribute("sess_id")), currentUserName());
+		} else {
+			session.setAttribute("sess_id", currentUserName());
+		}
+		
 		return "security/login";
 	}
 	
@@ -97,7 +108,14 @@ public class LoginController {
 		return "security/write_del";
 	}
 	
-
+	// 현재 로그인 상태의  username을 알아오는 메소드
+	public static String currentUserName() { 
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
+		return authentication.getName(); 
+	}
+	
+	
+	
 // ************** 안쓰는 것들 *********************	
 	@RequestMapping("/notice/home")
 	public String notice_home() {

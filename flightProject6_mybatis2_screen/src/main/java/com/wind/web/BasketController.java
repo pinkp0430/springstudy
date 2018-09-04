@@ -27,8 +27,13 @@ public class BasketController {
 		System.out.println("basket_input");
 		BasketDao dao = sqlSession.getMapper(BasketDao.class);
 		System.out.println(session.getAttribute("sess_id"));
+
+		if( session.getAttribute("sess_id") == null) {
+			session.setAttribute("sess_id", session.getId());
+		} 
 		
 		String username = String.valueOf(session.getAttribute("sess_id"));
+		
 		int ticket_id = Integer.parseInt(request.getParameter("id"));
 		int count = Integer.parseInt(request.getParameter("count"));
 		int ableCnt = dao.getableCntDao(ticket_id);  // 잔여석을 가져와서

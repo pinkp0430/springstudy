@@ -17,7 +17,7 @@ public interface SearchDao {
 	
 //******************** 안쓰는 것들
 	public ArrayList<TicketDto> ticket_port_listDao(String arrive);
-	public ArrayList<TicketDto> continent_ticketsDao(String continent);
+	public ArrayList<TicketAllDto> country_ticketsDao(String continent, String c_code);
 	public ArrayList<TicketDto> low_priceDao();
 	
 	

@@ -18,25 +18,13 @@
 <style>
 
 .frame {width:900px;margin:0 auto;}
-
-.list-unstyled > li {float:left;width:210px;padding:5px;}
-
+.list-unstyled > li {float:left;width:24%;padding:5px;}
 .form-submit {float:none;clear:both;margin-top:30px;text-align:center;}
-
-.card {position:relative;width:200px;height:200px;font-size:.8em;}
-
-.card-title {font-size:1.0em;}
-
+.card {position:relative;}
 .order-qty {position:absolute;right:10px;bottom:10px;}
 
-
-
 .modal {}
-
 .modal .card-submit {display:none;}
-
-
-
 
 </style>
 </head>
@@ -46,43 +34,14 @@
 </div>
 
 <div class="frame">
-		<nav class="navbar navbar-expand-md">
- 		  <a class="navbar-brand">대륙별 항공권</a>   	
-		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-		    <span class="navbar-toggler-icon"></span>
-		  </button>
-
-		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-		    <ul class="navbar-nav mr-auto">
-		    
-		      <!-- 대륙단위시작 -->
-		      <c:forEach items="${continent_list}" var="dto1">
-			      <li class="nav-item dropdown">
-			        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${dto1.continent}</a>
-			        <div class="dropdown-menu" aria-labelledby="dropdown01">
-			        
-			          <!-- 국가단위시작 -->
-			          <c:forEach items="${country_list}" var="dto2">
-
-			          	<c:if test="${dto1.continent eq dto2.continent}">
-   							<a class="dropdown-item" href="country_tickets?continent=${dto1.continent}&c_code=${dto2.c_code}">${dto2.c_name}</a>
-						</c:if>
-			          </c:forEach>
-			          
-			          <!-- 반복끝 -->
-			        </div>
-			      </li>
-			  </c:forEach>
-		      <!-- 반복끝 -->
-		      
-		    </ul>
-		    <div class="form-inline my-2 my-lg-0">
-		      <!-- 로그아웃 -->
-		    </div>
-		  </div>
-		</nav>
-
-	<!-- 티켓 뿌리기  -->
+		<div class="form-group">
+			<label for="" class="control">인기지역</label>
+			<ul class="">
+				<li><a href="">일본</a></li>
+				<li><a href="">중국</a></li>
+				<li><a href="">대만</a></li>
+			</ul>
+		</div>
 	<c:forEach items="${low_price_list}" var="dto0">
 		<ul class="list-unstyled">
 			<li style="float:left;">
@@ -90,10 +49,10 @@
 					<div class="card-body">
 						<h5 class="card-title">
 							<span class="departure">
-								<strong>${dto0.dep_name}</strong><em>(${dto0.departure})</em>
-							</span><br>
+								<strong>${dto0.dep_name}</strong><em>${dto0.departure}</em>
+							</span>
 							<span class="arrive">
-								<strong>${dto0.arri_name}</strong><em>(${dto0.arrive})(${dto0.arri_country})</em>
+								<strong>${dto0.arri_name}</strong><em>${dto0.arrive}</em>
 							</span>
 						</h5>
 						<p class="card-text price">
@@ -116,9 +75,12 @@
 							<dd>${dto0.arri_time}</dd>
 							<dt>소요시간</dt>
 							<dd>${dto0.flight_time}</dd>
+							<dt>소아 운임</dt>
+							<dd>${dto0.price}(50%할인)</dd>
 						</dl>
 						
-						<input type="hidden" name="id" value="${dto0.ticket_id}"> <!-- 여기서 파람값을 넣어주네.. -->
+						
+						<input type="hidden" name="id" value="${dto0.ticket_id}">
 						<input type="hidden" name="tk-qty" value="1">
 					</div>
 				</div>
@@ -138,13 +100,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-	<form name="order-form" method="post" class="form-order" action="ticket_port" >
+	<form name="order-form" method="post" class="form-order" >
       <div class="modal-body">
         ...
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"  >결제하기</button>
+        <button type="submit" class="btn btn-primary" id="ticket_port" >결제하기</button>
       </div>
 	</form>
     </div>
@@ -178,8 +140,8 @@ $('#modal-order').on('show.bs.modal', function (event) {
 
 
 $(document).on('submit', '.form-order', function(e){
-	//console.log('submit:', e);
-	//e.preventDefault();    // 요거가 결제누르면 ticket_port로 가는 걸 막음
+	console.log('submit:', e);
+	e.preventDefault();
 	e.stopPropagation();
 	//console.log( $( this ).serialize() );
 	var data = getFormData($(this));
@@ -230,19 +192,20 @@ $(document).on('click', '.menu-qty .btn', function(e){
 
 <!-- <a href="continent_tickets">america대륙내 티켓</a><br><br>  -->
 
-<form action="country_tickets" method="get">
+<form action="continent_tickets" method="get">
+ 
 	<select name="continent">
 		<c:forEach items="${continent_list}" var="dto2">
 	    	<option value="${dto2.continent}">${dto2.continent}</option>
 	    </c:forEach>
 	</select>
-
+<!-- 
 	<select name="country">
 		<c:forEach items="${country_list}" var="dto3">
 	    	<option value="${dto3.c_code}">${dto3.c_name}</option>
 	    </c:forEach>
 	</select>
-	
+ -->	
 	<input type="submit" value = "선택">
 </form>
 

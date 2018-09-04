@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>title</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<style>
+.frame {width:900px;margin:0 auto;}
+.list-unstyled > li {float:left;width:210px;padding:5px;}
+.form-submit {float:none;clear:both;margin-top:30px;text-align:center;}
+.card {position:relative;width:200px;height:200px;font-size:.8em;}
+.card-title {font-size:1.5em;}
+.order-qty {position:absolute;right:10px;bottom:10px;}
+
+.modal {}
+.modal .card-submit {display:none;}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="frame">
+		<nav class="navbar navbar-expand-md">
+		  <a class="navbar-brand" href="#">대륙별 항공권</a>
+		
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		
+		  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		    <ul class="navbar-nav mr-auto">
+		      <!-- 대륙단위시작 -->
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">아시아</a>
+		        <div class="dropdown-menu" aria-labelledby="dropdown01">
+		          <!-- 국가단위시작 -->
+		          <a class="dropdown-item" href="/list.html?">중국</a>
+		          <!-- 반복끝 -->
+		          <a class="dropdown-item" href="#">일본</a>
+		        </div>
+		      </li>
+		      <!-- 반복끝 -->
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">아메리카</a>
+		        <div class="dropdown-menu" aria-labelledby="dropdown02">
+		          <a class="dropdown-item" href="#">미국</a>
+		          <a class="dropdown-item" href="#">브라질</a>
+		        </div>
+		      </li>
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">유럽</a>
+		        <div class="dropdown-menu" aria-labelledby="dropdown02">
+		          <a class="dropdown-item" href="#">영국</a>
+		          <a class="dropdown-item" href="#">프랑스</a>
+		          <a class="dropdown-item" href="#">스페인</a>
+		          <a class="dropdown-item" href="#">이탈리아</a>
+		        </div>
+		      </li>
+		    </ul>
+		    <div class="form-inline my-2 my-lg-0">
+		      <!-- 로그아웃 -->
+		    </div>
+		  </div>
+		</nav>
+
+		<h2 class="title">아시아>중국</h2>				
+		<ul class="list-unstyled">
+			<li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li><li style="float:left;">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">
+							<span class="departure">
+								<strong>서울</strong><em>ICN</em>
+							</span>
+							<span class="arrive">
+								<strong>도쿄</strong><em>NRT</em>
+							</span>
+						</h5>
+						<p class="card-text price">
+							<span class="price">200,000원</span>
+						</p>
+						<p class="card-text datetime">
+							<span class="departure" title="출발시각">2018/09/02 13:15</span>
+						</p>
+						<div class="card-submit">
+							<button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-confirm">주문</button>
+							<button type="button" class="btn btn-sm btn-info" data-toggle="collapse" data-target="#collapse-info">자세한정보</button>
+						</div>
+					</div>
+					<div class="card-footer collapse" id="collapse-info">
+						<dl class="dl-horizontal">
+							<dt>출발시각</dt>
+							<dd>2018/09/02 13:15</dd>
+							<dt>도착예정시각</dt>
+							<dd>2018/09/02 14:15</dd>
+							<dt>소요시간</dt>
+							<dd>2시간</dd>
+							<dt>소아 운임</dt>
+							<dd>100,000(50%할인)</dd>
+						</dl>
+						<input type="hidden" name="tk-id" value="abababab">
+						<input type="hidden" name="tk-qty" value="1">
+					</div>
+				</div>
+			</li>
+		</ul>
+	
+	
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-confirm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">티켓 구입</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	<form name="order-form" method="get" class="form-order">
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">결제하기</button>
+      </div>
+	</form>
+    </div>
+  </div>
+</div>
+<script>
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+//modal-confirm
+$('#modal-confirm').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget);
+	var recipient = button.data('tk-id');
+	var card = button.closest('.card');
+	var info1 = card.find('.card-body');
+	var info2 = card.find('.card-footer');
+	var info = info1.html() + info2.html();
+	var modal = $(this);
+	modal.find('.modal-body').html(info);
+});
+
+
+$(document).on('submit', '.form-order', function(e){
+	console.log('submit:', e);
+	//e.preventDefault();
+	//e.stopPropagation();
+	//console.log( $( this ).serialize() );
+	var data = getFormData($(this));
+	console.log(data);
+	//alert(data);
+});
+
+
+$(document).on('click', '.menu-qty .btn', function(e){
+	//console.log('click:', e);
+	console.log('click:', e.target.dataset.qty, e.target.dataset.target);
+	$('#'+e.target.dataset.target).val( e.target.dataset.qty );
+	//$(e.target).value = $(e.target).
+});
+
+</script>
+
+</body>
+</html>
